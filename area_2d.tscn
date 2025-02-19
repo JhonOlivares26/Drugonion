@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=6 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://2fds70j687w8" path="res://art/Drugonion.png" id="1_icyje"]
 [ext_resource type="Texture2D" uid="uid://ceksn7nnpjwg8" path="res://art/Drugonion_walk.png" id="2_f1r4w"]
+[ext_resource type="Texture2D" uid="uid://cm7apq27i3s68" path="res://pixil-frame-0.png" id="3_ia7nb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rpj6v"]
 animations = [{
@@ -11,6 +12,9 @@ animations = [{
 }, {
 "duration": 2.0,
 "texture": ExtResource("2_f1r4w")
+}, {
+"duration": 4.0,
+"texture": ExtResource("3_ia7nb")
 }],
 "loop": true,
 "name": &"default",
@@ -27,7 +31,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_rpj6v")
-frame_progress = 0.402083
+frame_progress = 0.103545
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
