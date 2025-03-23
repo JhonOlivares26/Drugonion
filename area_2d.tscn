@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=15 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
 [ext_resource type="Texture2D" uid="uid://dhqjgl4v2eol3" path="res://art/escenario/Escenario.png" id="1_k8b2l"]
 [ext_resource type="Texture2D" uid="uid://b2dvvrtsxvul2" path="res://art/Drugonion/drugonion-jump.png" id="4_07knm"]
 [ext_resource type="Texture2D" uid="uid://nm7fi3kyl500" path="res://art/Drugonion/drugonion-walk.png" id="5_8mlsi"]
+[ext_resource type="Script" path="res://Carrotscigar.gd" id="6_kuoum"]
+[ext_resource type="Texture2D" uid="uid://duw3y0yuncrcd" path="res://art/Carrotcigar/CarrotCigar.png" id="6_ou73l"]
+[ext_resource type="Texture2D" uid="uid://bbfiio0e2wfwy" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move1.png" id="7_3b232"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu01t"]
 size = Vector2(800, 20)
@@ -41,6 +44,36 @@ radius = 23.0217
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx5s6"]
 size = Vector2(20, 143.019)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndyul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ou73l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3b232")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ou73l")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ap"]
+size = Vector2(29, 62)
 
 [node name="Area2D" type="Area2D"]
 position = Vector2(-27, 67)
@@ -96,3 +129,17 @@ shape = SubResource("RectangleShape2D_bu01t")
 offset = Vector2(0, -120)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(101, 0)
+script = ExtResource("6_kuoum")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+position = Vector2(0, -15)
+scale = Vector2(0.119999, 0.0800006)
+sprite_frames = SubResource("SpriteFrames_ndyul")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(5.5, -13)
+shape = SubResource("RectangleShape2D_dd0ap")

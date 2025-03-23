@@ -12,11 +12,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Movimiento horizontal
-	var direction = Input.get_axis("move_left_player1", "move_right_player1")
+	var direction = Input.get_axis("move_left_player2", "move_right_player2")
 	velocity.x = direction * speed
 
 	# Saltar
-	if Input.is_action_just_pressed("jump_player1") and is_on_floor():
+	if Input.is_action_just_pressed("jump_player2") and is_on_floor():
 		velocity.y = jump_force
 
 	# Animaciones
@@ -25,7 +25,7 @@ func _physics_process(delta):
 			sprite.play("idle")
 		else:
 			sprite.play("run")
-			sprite.flip_h = direction < 0  # Voltear sprite si se mueve a la izquierda
+			sprite.flip_h = direction > 0  # Voltear sprite si se mueve a la izquierda
 	else:
 		sprite.play("jump")
 
