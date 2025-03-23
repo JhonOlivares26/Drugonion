@@ -25,7 +25,7 @@ func _physics_process(delta):
 			sprite.play("idle")
 		else:
 			sprite.play("run")
-			sprite.flip_h = direction > 0  # Voltear sprite si se mueve a la izquierda
+			sprite.flip_h = direction > 0  # Voltear sprite si se mueve a la derecha
 	else:
 		sprite.play("jump")
 

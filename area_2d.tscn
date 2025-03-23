@@ -1,13 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=19 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
 [ext_resource type="Texture2D" uid="uid://dhqjgl4v2eol3" path="res://art/escenario/Escenario.png" id="1_k8b2l"]
 [ext_resource type="Texture2D" uid="uid://b2dvvrtsxvul2" path="res://art/Drugonion/drugonion-jump.png" id="4_07knm"]
 [ext_resource type="Texture2D" uid="uid://nm7fi3kyl500" path="res://art/Drugonion/drugonion-walk.png" id="5_8mlsi"]
+[ext_resource type="Texture2D" uid="uid://b4nly1mkao73e" path="res://art/Drugonion/drugonion-light-punch.png" id="5_cte8b"]
 [ext_resource type="Script" path="res://Carrotscigar.gd" id="6_kuoum"]
 [ext_resource type="Texture2D" uid="uid://duw3y0yuncrcd" path="res://art/Carrotcigar/CarrotCigar.png" id="6_ou73l"]
 [ext_resource type="Texture2D" uid="uid://bbfiio0e2wfwy" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move1.png" id="7_3b232"]
+[ext_resource type="Texture2D" uid="uid://c3w8k1h34oah6" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move1.png" id="9_7x0r0"]
+[ext_resource type="Texture2D" uid="uid://c5v1f5qdonb8r" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move2.png" id="10_7yvoa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu01t"]
 size = Vector2(800, 7)
@@ -28,6 +31,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cte8b")
+}],
+"loop": true,
+"name": &"light_attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -59,6 +70,17 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7x0r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7yvoa")
+}],
+"loop": true,
+"name": &"light_attack",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +130,7 @@ script = ExtResource("1_cyrre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drugonion"]
 sprite_frames = SubResource("SpriteFrames_rpj6v")
-animation = &"idle"
+animation = &"light_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drugonion"]
 position = Vector2(-1, -4.5)
@@ -123,7 +145,8 @@ script = ExtResource("6_kuoum")
 position = Vector2(0, -15)
 scale = Vector2(0.119999, 0.0800006)
 sprite_frames = SubResource("SpriteFrames_ndyul")
-animation = &"run"
+animation = &"light_attack"
+frame_progress = 0.148415
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carrotcigar"]
 position = Vector2(5.5, -13)
