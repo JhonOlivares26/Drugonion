@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=35 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
-[ext_resource type="Texture2D" uid="uid://dhqjgl4v2eol3" path="res://art/escenario/Escenario.png" id="1_k8b2l"]
+[ext_resource type="Texture2D" uid="uid://pkfwb4rb8io7" path="res://art/escenario/ventana.png" id="1_dkalp"]
+[ext_resource type="Texture2D" uid="uid://dl5cq2wo6a2p5" path="res://art/escenario/Escenario-removebg-preview (1).png" id="1_mg0w4"]
+[ext_resource type="Script" path="res://ventana.gd" id="2_4yvn4"]
 [ext_resource type="Texture2D" uid="uid://b2dvvrtsxvul2" path="res://art/Drugonion/drugonion-jump.png" id="4_07knm"]
 [ext_resource type="Texture2D" uid="uid://nm7fi3kyl500" path="res://art/Drugonion/drugonion-walk.png" id="5_8mlsi"]
 [ext_resource type="Texture2D" uid="uid://b4nly1mkao73e" path="res://art/Drugonion/drugonion-light-punch.png" id="5_cte8b"]
@@ -11,6 +13,91 @@
 [ext_resource type="Texture2D" uid="uid://bbfiio0e2wfwy" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move1.png" id="7_3b232"]
 [ext_resource type="Texture2D" uid="uid://c3w8k1h34oah6" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move1.png" id="9_7x0r0"]
 [ext_resource type="Texture2D" uid="uid://c5v1f5qdonb8r" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move2.png" id="10_7yvoa"]
+[ext_resource type="Texture2D" uid="uid://c5lcyndamxbgg" path="res://art/escenario/raton-parado1.png" id="12_4ehst"]
+[ext_resource type="Texture2D" uid="uid://bino8r0komxqu" path="res://art/escenario/raton-parado2.png" id="13_qypq2"]
+[ext_resource type="Texture2D" uid="uid://c0ppe7vyy5qe8" path="res://art/escenario/raton-parado3.png" id="14_fpx34"]
+[ext_resource type="Script" path="res://rata.gd" id="15_2stgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6u3c"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(0, 0, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb80o"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(768, 0, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pbnc"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(1536, 0, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwxcr"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(2304, 0, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7f4t"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(3072, 0, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnc4h"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(0, 256, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sdxg"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(768, 256, 768, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgwlj"]
+atlas = ExtResource("1_dkalp")
+region = Rect2(1536, 256, 768, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qv8cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6u3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb80o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pbnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwxcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7f4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnc4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sdxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgwlj")
+}],
+"loop": true,
+"name": &"Paisaje",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5f6jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_4ehst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qypq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fpx34")
+}],
+"loop": true,
+"name": &"Rat",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu01t"]
 size = Vector2(800, 7)
@@ -103,10 +190,48 @@ size = Vector2(147, 5)
 [node name="Area2D" type="Area2D"]
 position = Vector2(-27, 67)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Ventana" type="AnimatedSprite2D" parent="."]
+position = Vector2(57, -144)
+scale = Vector2(0.421874, 0.220741)
+sprite_frames = SubResource("SpriteFrames_qv8cj")
+animation = &"Paisaje"
+frame_progress = 0.920084
+script = ExtResource("2_4yvn4")
+
+[node name="Escenario" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -118)
-scale = Vector2(0.56, 0.320001)
-texture = ExtResource("1_k8b2l")
+scale = Vector2(0.766406, 0.44)
+texture = ExtResource("1_mg0w4")
+
+[node name="Rata2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-51, -102)
+rotation = -3.14159
+scale = Vector2(0.374562, -0.383516)
+sprite_frames = SubResource("SpriteFrames_5f6jb")
+animation = &"Rat"
+frame_progress = 0.511352
+script = ExtResource("15_2stgf")
+
+[node name="Rata3" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-224, 2)
+scale = Vector2(0.420294, 0.467085)
+sprite_frames = SubResource("SpriteFrames_5f6jb")
+animation = &"Rat"
+frame_progress = 0.811456
+script = ExtResource("15_2stgf")
+
+[node name="Rata" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(220, -4)
+rotation = 3.14159
+scale = Vector2(0.399995, -0.439997)
+sprite_frames = SubResource("SpriteFrames_5f6jb")
+animation = &"Rat"
+frame_progress = 0.860865
+script = ExtResource("15_2stgf")
 
 [node name="Piso" type="StaticBody2D" parent="."]
 
@@ -120,7 +245,6 @@ scale = Vector2(0.240001, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mesa"]
 position = Vector2(-18, 32)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bu01t")
 
 [node name="Drugonion" type="CharacterBody2D" parent="."]
@@ -129,8 +253,9 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_cyrre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drugonion"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_rpj6v")
-animation = &"light_attack"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drugonion"]
 position = Vector2(-1, -4.5)
@@ -142,11 +267,11 @@ position = Vector2(101, 19)
 script = ExtResource("6_kuoum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Carrotcigar"]
+texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.119999, 0.0800006)
 sprite_frames = SubResource("SpriteFrames_ndyul")
-animation = &"light_attack"
-frame_progress = 0.148415
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carrotcigar"]
 position = Vector2(5.5, -13)
