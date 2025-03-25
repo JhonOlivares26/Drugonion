@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=44 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
@@ -212,6 +212,9 @@ size = Vector2(64.3984, 31.7451)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwimh"]
 size = Vector2(5.48144, 21.7824)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqsd2"]
+size = Vector2(9.60175, 26.0342)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx5s6"]
 size = Vector2(20, 150.283)
 
@@ -344,8 +347,11 @@ position = Vector2(-37, -7)
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Carrotcigar/Area2D"]
 position = Vector2(45.076, -36.0414)
 rotation = -2.11185
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_cwimh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrotcigar/Area2D/HitboxHardAttack"]
+position = Vector2(0.172852, 3.01709)
+shape = SubResource("RectangleShape2D_yqsd2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-4, 0)
