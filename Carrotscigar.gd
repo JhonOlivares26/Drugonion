@@ -1,3 +1,4 @@
+# Carrotscigar.gd
 extends CharacterBody2D
 
 @export var speed: float = 200.0
@@ -21,36 +22,29 @@ func _ready():
 	health_bar.value = current_health
 	hitbox.monitoring = false  
 	hitbox_shape.set_deferred("disabled", true)
+	hitbox.monitorable = true
 
 func _physics_process(delta):
-	# Aplicar gravedad
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Movimiento
 	var direction = Input.get_axis("move_left_player2", "move_right_player2")
-	
-	# Salto
 	if is_on_floor() and Input.is_action_just_pressed("jump_player2"):
 		velocity.y = jump_force
 		sprite.play("jump")
 
-	# Animaciones
 	if can_attack:
 		velocity.x = direction * speed
-	
 		if is_on_floor():
 			if direction == 0:
 				sprite.play("idle")
 			else:
-				sprite.play("run")
 				sprite.flip_h = direction > 0
 		else:
 			sprite.play("jump")
-		
+
 	move_and_slide()
 
-	# Ataques
 	if Input.is_action_just_pressed("light_attack_player2") and can_attack:
 		attack("light")
 	elif Input.is_action_just_pressed("hard_attack_player2") and can_attack:
@@ -60,6 +54,7 @@ func attack(type):
 	can_attack = false
 	hitbox.monitoring = true
 	hitbox_shape.set_deferred("disabled", false)  
+	print("✅ Hitbox activada")
 
 	if type == "light":
 		sprite.play("light_attack")
@@ -70,18 +65,23 @@ func attack(type):
 
 	hitbox.monitoring = false
 	hitbox_shape.set_deferred("disabled", true)  
+	print("❌ Hitbox desactivada")
 	can_attack = true
 
 func _on_Area2D_area_entered(area):
-	if area.owner != self and area.owner.is_in_group("fighters"):
+	if area and area.owner != self and area.owner.is_in_group("fighters"):
+		print("⚡ Hitbox detectó algo:", area.owner.name)
 		var damage = attack_damage_light if sprite.animation == "light_attack" else attack_damage_heavy
+		print("🔥 Golpeando a", area.owner.name, "con", damage, "de daño")
 		area.owner.take_damage(damage)
 
 func take_damage(amount: int):
 	current_health -= amount
 	health_bar.value = current_health
+	print("💥 Me atacaron, vida restante:", current_health)
 	if current_health <= 0:
 		die()
 
 func die():
+	print("💀", name, "ha muerto")
 	queue_free()

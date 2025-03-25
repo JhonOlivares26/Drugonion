@@ -162,7 +162,7 @@ animations = [{
 radius = 23.0217
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_065el"]
-radius = 26.0768
+radius = 32.0624
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndyul"]
 animations = [{
@@ -217,7 +217,7 @@ animations = [{
 size = Vector2(64.3984, 31.7451)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwimh"]
-size = Vector2(5.48144, 21.7824)
+size = Vector2(33.8905, 52.9606)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx5s6"]
 size = Vector2(20, 150.283)
@@ -233,7 +233,7 @@ position = Vector2(57, -144)
 scale = Vector2(0.421874, 0.220741)
 sprite_frames = SubResource("SpriteFrames_qv8cj")
 animation = &"Paisaje"
-frame_progress = 0.118709
+frame_progress = 0.683423
 script = ExtResource("2_4yvn4")
 
 [node name="Escenario" type="Sprite2D" parent="."]
@@ -349,10 +349,11 @@ texture_progress = ExtResource("15_h1k4o")
 
 [node name="Area2D" type="Area2D" parent="Carrotcigar"]
 position = Vector2(-37, -7)
+collision_layer = 2
 
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Carrotcigar/Area2D"]
-position = Vector2(45.076, -36.0414)
-rotation = -2.11185
+position = Vector2(32, -4)
+rotation = 3.1297
 shape = SubResource("RectangleShape2D_cwimh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
