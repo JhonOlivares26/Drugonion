@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=43 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://duw3y0yuncrcd" path="res://art/Carrotcigar/CarrotCigar.png" id="6_ou73l"]
 [ext_resource type="Texture2D" uid="uid://bbfiio0e2wfwy" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move1.png" id="7_3b232"]
 [ext_resource type="Texture2D" uid="uid://c3w8k1h34oah6" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move1.png" id="9_7x0r0"]
+[ext_resource type="Texture2D" uid="uid://bpg8kb8vyhjd0" path="res://art/Drugonion/drugonion-heavy-punch.png" id="9_whkb1"]
 [ext_resource type="Texture2D" uid="uid://c5v1f5qdonb8r" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move2.png" id="10_7yvoa"]
 [ext_resource type="Texture2D" uid="uid://c5lcyndamxbgg" path="res://art/escenario/raton-parado1.png" id="12_4ehst"]
 [ext_resource type="Texture2D" uid="uid://bino8r0komxqu" path="res://art/escenario/raton-parado2.png" id="13_qypq2"]
@@ -111,6 +112,14 @@ size = Vector2(800, 7)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_whkb1")
+}],
+"loop": true,
+"name": &"hard_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_7ej3u")
 }],
 "loop": true,
@@ -131,7 +140,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"light_attack",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -144,6 +153,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_er1de"]
 radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_065el"]
+radius = 26.0768
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndyul"]
 animations = [{
@@ -183,7 +195,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"light_attack",
-"speed": 3.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -195,7 +207,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ap"]
-size = Vector2(29, 62)
+size = Vector2(64.3984, 31.7451)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwimh"]
+size = Vector2(5.48144, 21.7824)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx5s6"]
 size = Vector2(20, 150.283)
@@ -271,24 +286,29 @@ script = ExtResource("1_cyrre")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drugonion"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_rpj6v")
-animation = &"idle"
+animation = &"light_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drugonion"]
 position = Vector2(-1, -4.5)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_er1de")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Drugonion"]
+[node name="HealthBar" type="TextureProgressBar" parent="Drugonion"]
 offset_left = -274.0
-offset_top = -552.0
-offset_right = 23.0
+offset_top = -554.0
+offset_right = 26.0
 offset_bottom = -514.0
 value = 50.0
 nine_patch_stretch = true
-stretch_margin_left = 6
 texture_under = ExtResource("13_vioxn")
 texture_over = ExtResource("14_k7so5")
 texture_progress = ExtResource("15_h1k4o")
+
+[node name="Area2D" type="Area2D" parent="Drugonion"]
+
+[node name="HitboxHardAttack" type="CollisionShape2D" parent="Drugonion/Area2D"]
+position = Vector2(54, -4)
+shape = SubResource("CircleShape2D_065el")
 
 [node name="Carrotcigar" type="CharacterBody2D" parent="."]
 position = Vector2(101, 19)
@@ -296,27 +316,36 @@ script = ExtResource("6_kuoum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Carrotcigar"]
 texture_filter = 1
-position = Vector2(0, -15)
+position = Vector2(22, -16)
 scale = Vector2(0.119999, 0.0800006)
 sprite_frames = SubResource("SpriteFrames_ndyul")
 animation = &"light_attack"
-frame = 1
-frame_progress = 0.536655
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carrotcigar"]
-position = Vector2(5.5, -13)
+position = Vector2(27.8539, -12.1761)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_dd0ap")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Carrotcigar"]
+[node name="HealthBar" type="TextureProgressBar" parent="Carrotcigar"]
 offset_left = -3.0
 offset_top = -279.0
 offset_right = 150.0
 offset_bottom = -258.0
+localize_numeral_system = false
 value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("13_vioxn")
 texture_over = ExtResource("22_i01jj")
 texture_progress = ExtResource("15_h1k4o")
+
+[node name="Area2D" type="Area2D" parent="Carrotcigar"]
+position = Vector2(-37, -7)
+
+[node name="HitboxHardAttack" type="CollisionShape2D" parent="Carrotcigar/Area2D"]
+position = Vector2(45.076, -36.0414)
+rotation = -2.11185
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_cwimh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-4, 0)
@@ -348,6 +377,7 @@ position = Vector2(217.5, -155.5)
 shape = SubResource("RectangleShape2D_254vx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(15, 0)
 offset = Vector2(0, -120)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
