@@ -86,7 +86,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Paisaje",
-"speed": 15.0
+"speed": 9.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5f6jb"]
@@ -233,7 +233,7 @@ position = Vector2(57, -144)
 scale = Vector2(0.421874, 0.220741)
 sprite_frames = SubResource("SpriteFrames_qv8cj")
 animation = &"Paisaje"
-frame_progress = 0.920084
+frame_progress = 0.118709
 script = ExtResource("2_4yvn4")
 
 [node name="Escenario" type="Sprite2D" parent="."]
@@ -301,10 +301,11 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_er1de")
 
 [node name="HealthBar" type="TextureProgressBar" parent="Drugonion"]
-offset_left = -274.0
-offset_top = -554.0
-offset_right = 26.0
-offset_bottom = -514.0
+offset_left = -66.0
+offset_top = -94.0
+offset_right = 234.0
+offset_bottom = -54.0
+scale = Vector2(0.447156, 0.520001)
 value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("13_vioxn")
@@ -334,10 +335,11 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_dd0ap")
 
 [node name="HealthBar" type="TextureProgressBar" parent="Carrotcigar"]
-offset_left = -3.0
-offset_top = -279.0
-offset_right = 150.0
-offset_bottom = -258.0
+offset_left = -6.0
+offset_top = -69.0
+offset_right = 147.0
+offset_bottom = -48.0
+scale = Vector2(0.440001, 0.52)
 localize_numeral_system = false
 value = 50.0
 nine_patch_stretch = true
