@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=44 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bbfiio0e2wfwy" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move1.png" id="7_3b232"]
 [ext_resource type="Texture2D" uid="uid://c3w8k1h34oah6" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move1.png" id="9_7x0r0"]
 [ext_resource type="Texture2D" uid="uid://bpg8kb8vyhjd0" path="res://art/Drugonion/drugonion-heavy-punch.png" id="9_whkb1"]
+[ext_resource type="Texture2D" uid="uid://qoouh53ukcbd" path="res://art/Drugonion/drugonion-heavy-punch-fix.png" id="10_5ypgr"]
 [ext_resource type="Texture2D" uid="uid://c5v1f5qdonb8r" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move2.png" id="10_7yvoa"]
 [ext_resource type="Texture2D" uid="uid://c5lcyndamxbgg" path="res://art/escenario/raton-parado1.png" id="12_4ehst"]
 [ext_resource type="Texture2D" uid="uid://bino8r0komxqu" path="res://art/escenario/raton-parado2.png" id="13_qypq2"]
@@ -112,7 +113,10 @@ size = Vector2(800, 7)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_whkb1")
+"texture": ExtResource("5_cte8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5ypgr")
 }],
 "loop": true,
 "name": &"hard_attack",
@@ -137,10 +141,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_cte8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_whkb1")
 }],
 "loop": true,
 "name": &"light_attack",
-"speed": 1.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -307,7 +314,7 @@ texture_progress = ExtResource("15_h1k4o")
 [node name="Area2D" type="Area2D" parent="Drugonion"]
 
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Drugonion/Area2D"]
-position = Vector2(54, -4)
+position = Vector2(76, -4)
 shape = SubResource("CircleShape2D_065el")
 
 [node name="Carrotcigar" type="CharacterBody2D" parent="."]
@@ -344,7 +351,6 @@ position = Vector2(-37, -7)
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Carrotcigar/Area2D"]
 position = Vector2(45.076, -36.0414)
 rotation = -2.11185
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_cwimh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
