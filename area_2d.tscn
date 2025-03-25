@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=40 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
@@ -15,8 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://c5v1f5qdonb8r" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move2.png" id="10_7yvoa"]
 [ext_resource type="Texture2D" uid="uid://c5lcyndamxbgg" path="res://art/escenario/raton-parado1.png" id="12_4ehst"]
 [ext_resource type="Texture2D" uid="uid://bino8r0komxqu" path="res://art/escenario/raton-parado2.png" id="13_qypq2"]
+[ext_resource type="Texture2D" uid="uid://y8w2x4v43acf" path="res://art/HealthBar/fondo_barra.png" id="13_vioxn"]
 [ext_resource type="Texture2D" uid="uid://c0ppe7vyy5qe8" path="res://art/escenario/raton-parado3.png" id="14_fpx34"]
+[ext_resource type="Texture2D" uid="uid://bxhr2y42rl0ri" path="res://art/HealthBar/borde_barra_Drugonion.png" id="14_k7so5"]
 [ext_resource type="Script" path="res://rata.gd" id="15_2stgf"]
+[ext_resource type="Texture2D" uid="uid://np7jambksrd6" path="res://art/HealthBar/progreso_barra.png" id="15_h1k4o"]
+[ext_resource type="Texture2D" uid="uid://ducqkev4vtvfx" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move2.png" id="18_bheac"]
+[ext_resource type="Texture2D" uid="uid://dqh57tfeqak7" path="res://art/HealthBar/borde_barra_Cartotcigar.png" id="22_i01jj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6u3c"]
 atlas = ExtResource("1_dkalp")
@@ -144,6 +149,17 @@ radius = 23.0217
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("7_3b232")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bheac")
+}],
+"loop": true,
+"name": &"hard_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_ou73l")
 }],
 "loop": true,
@@ -262,6 +278,18 @@ position = Vector2(-1, -4.5)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_er1de")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Drugonion"]
+offset_left = -274.0
+offset_top = -552.0
+offset_right = 23.0
+offset_bottom = -514.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+texture_under = ExtResource("13_vioxn")
+texture_over = ExtResource("14_k7so5")
+texture_progress = ExtResource("15_h1k4o")
+
 [node name="Carrotcigar" type="CharacterBody2D" parent="."]
 position = Vector2(101, 19)
 script = ExtResource("6_kuoum")
@@ -271,11 +299,24 @@ texture_filter = 1
 position = Vector2(0, -15)
 scale = Vector2(0.119999, 0.0800006)
 sprite_frames = SubResource("SpriteFrames_ndyul")
-animation = &"idle"
+animation = &"light_attack"
+frame = 1
+frame_progress = 0.536655
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carrotcigar"]
 position = Vector2(5.5, -13)
 shape = SubResource("RectangleShape2D_dd0ap")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Carrotcigar"]
+offset_left = -3.0
+offset_top = -279.0
+offset_right = 150.0
+offset_bottom = -258.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("13_vioxn")
+texture_over = ExtResource("22_i01jj")
+texture_progress = ExtResource("15_h1k4o")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-4, 0)
