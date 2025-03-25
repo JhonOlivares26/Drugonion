@@ -17,7 +17,6 @@ var can_attack: bool = true
 @onready var hitbox_shape = $Area2D/HitboxHardAttack
 
 func _ready():
-	print("Hitbox monitoring:", hitbox.monitoring, " | Monitorable:", hitbox.monitorable)
 	add_to_group("fighters")
 	current_health = max_health
 	health_bar.value = current_health
@@ -70,7 +69,6 @@ func attack(type):
 	can_attack = true
 
 func _on_Area2D_area_entered(area):
-	print("Se ejecutó el _on_Area2D_area_entered")
 	if area and area.owner != self and area.owner.is_in_group("fighters"):
 		print("⚡ Hitbox detectó algo:", area.owner.name)
 		var damage = attack_damage_light if sprite.animation == "light_attack" else attack_damage_heavy

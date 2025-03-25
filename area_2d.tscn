@@ -268,7 +268,6 @@ frame_progress = 0.860865
 script = ExtResource("15_2stgf")
 
 [node name="Piso" type="StaticBody2D" parent="."]
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
 position = Vector2(-18, 42)
@@ -277,16 +276,14 @@ shape = SubResource("RectangleShape2D_bu01t")
 [node name="Mesa" type="StaticBody2D" parent="."]
 position = Vector2(1, -75)
 scale = Vector2(0.240001, 1)
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mesa"]
 position = Vector2(-18, 32)
 shape = SubResource("RectangleShape2D_bu01t")
 
 [node name="Drugonion" type="CharacterBody2D" parent="."]
-position = Vector2(-125, 16)
+position = Vector2(-125, 17)
 scale = Vector2(0.5, 0.5)
-collision_mask = 2
 script = ExtResource("1_cyrre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drugonion"]
@@ -311,16 +308,13 @@ texture_over = ExtResource("14_k7so5")
 texture_progress = ExtResource("15_h1k4o")
 
 [node name="Area2D" type="Area2D" parent="Drugonion"]
-collision_layer = 4
-collision_mask = 2
 
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Drugonion/Area2D"]
 position = Vector2(54, -4)
 shape = SubResource("CircleShape2D_065el")
 
 [node name="Carrotcigar" type="CharacterBody2D" parent="."]
-position = Vector2(101, 17)
-collision_layer = 2
+position = Vector2(101, 19)
 script = ExtResource("6_kuoum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Carrotcigar"]
@@ -349,10 +343,6 @@ texture_progress = ExtResource("15_h1k4o")
 
 [node name="Area2D" type="Area2D" parent="Carrotcigar"]
 position = Vector2(-37, -7)
-<<<<<<< Updated upstream
-=======
-collision_layer = 8
->>>>>>> Stashed changes
 
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Carrotcigar/Area2D"]
 position = Vector2(45.076, -36.0414)
@@ -365,7 +355,6 @@ shape = SubResource("RectangleShape2D_yqsd2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-4, 0)
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(300, -121.7)
@@ -374,7 +363,6 @@ shape = SubResource("RectangleShape2D_hx5s6")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-595, 0)
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(300, -121)
@@ -383,14 +371,12 @@ shape = SubResource("RectangleShape2D_hx5s6")
 
 [node name="Techo" type="StaticBody2D" parent="."]
 position = Vector2(0, -316)
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Techo"]
 position = Vector2(-18, 32)
 shape = SubResource("RectangleShape2D_bu01t")
 
 [node name="Refrigerador" type="StaticBody2D" parent="."]
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Refrigerador"]
 position = Vector2(217.5, -155.5)
