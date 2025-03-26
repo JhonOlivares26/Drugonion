@@ -17,6 +17,8 @@ var can_attack: bool = true
 @onready var hitbox_shape = $Area2D/HitboxHardAttack
 
 func _ready():
+	print("Referencia a hitbox:", hitbox)
+	print("Referencia a hitbox_shape:", hitbox_shape)
 	add_to_group("fighters")
 	current_health = max_health
 	health_bar.value = current_health
@@ -25,6 +27,7 @@ func _ready():
 	hitbox.monitorable = true
 
 func _physics_process(delta):
+	print("Hitbox:", hitbox.monitoring, "| Shape:", hitbox_shape.disabled)
 	if not is_on_floor():
 		velocity.y += gravity * delta
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=43 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
 [ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
@@ -155,7 +155,7 @@ animations = [{
 radius = 23.0217
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_065el"]
-radius = 26.0768
+radius = 28.32
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndyul"]
 animations = [{
@@ -212,9 +212,6 @@ size = Vector2(64.3984, 31.7451)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwimh"]
 size = Vector2(5.48144, 21.7824)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqsd2"]
-size = Vector2(9.60175, 26.0342)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx5s6"]
 size = Vector2(20, 150.283)
 
@@ -268,6 +265,7 @@ frame_progress = 0.860865
 script = ExtResource("15_2stgf")
 
 [node name="Piso" type="StaticBody2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
 position = Vector2(-18, 42)
@@ -276,6 +274,7 @@ shape = SubResource("RectangleShape2D_bu01t")
 [node name="Mesa" type="StaticBody2D" parent="."]
 position = Vector2(1, -75)
 scale = Vector2(0.240001, 1)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mesa"]
 position = Vector2(-18, 32)
@@ -284,6 +283,7 @@ shape = SubResource("RectangleShape2D_bu01t")
 [node name="Drugonion" type="CharacterBody2D" parent="."]
 position = Vector2(-125, 17)
 scale = Vector2(0.5, 0.5)
+collision_mask = 2
 script = ExtResource("1_cyrre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Drugonion"]
@@ -297,10 +297,11 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_er1de")
 
 [node name="HealthBar" type="TextureProgressBar" parent="Drugonion"]
-offset_left = -274.0
-offset_top = -554.0
-offset_right = 26.0
-offset_bottom = -514.0
+offset_left = -66.0
+offset_top = -104.0
+offset_right = 234.0
+offset_bottom = -64.0
+scale = Vector2(0.440002, 0.599999)
 value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("13_vioxn")
@@ -308,13 +309,16 @@ texture_over = ExtResource("14_k7so5")
 texture_progress = ExtResource("15_h1k4o")
 
 [node name="Area2D" type="Area2D" parent="Drugonion"]
+position = Vector2(18, 2)
 
 [node name="HitboxHardAttack" type="CollisionShape2D" parent="Drugonion/Area2D"]
 position = Vector2(54, -4)
+scale = Vector2(1, -1.0133)
 shape = SubResource("CircleShape2D_065el")
 
 [node name="Carrotcigar" type="CharacterBody2D" parent="."]
 position = Vector2(101, 19)
+collision_layer = 2
 script = ExtResource("6_kuoum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Carrotcigar"]
@@ -330,10 +334,11 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_dd0ap")
 
 [node name="HealthBar" type="TextureProgressBar" parent="Carrotcigar"]
-offset_left = -3.0
-offset_top = -279.0
-offset_right = 150.0
-offset_bottom = -258.0
+offset_left = -5.0
+offset_top = -74.0
+offset_right = 148.0
+offset_bottom = -53.0
+scale = Vector2(0.440002, 0.56)
 localize_numeral_system = false
 value = 50.0
 nine_patch_stretch = true
@@ -349,12 +354,9 @@ position = Vector2(45.076, -36.0414)
 rotation = -2.11185
 shape = SubResource("RectangleShape2D_cwimh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrotcigar/Area2D/HitboxHardAttack"]
-position = Vector2(0.172852, 3.01709)
-shape = SubResource("RectangleShape2D_yqsd2")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-4, 0)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(300, -121.7)
@@ -363,6 +365,7 @@ shape = SubResource("RectangleShape2D_hx5s6")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-595, 0)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(300, -121)
@@ -371,12 +374,14 @@ shape = SubResource("RectangleShape2D_hx5s6")
 
 [node name="Techo" type="StaticBody2D" parent="."]
 position = Vector2(0, -316)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Techo"]
 position = Vector2(-18, 32)
 shape = SubResource("RectangleShape2D_bu01t")
 
 [node name="Refrigerador" type="StaticBody2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Refrigerador"]
 position = Vector2(217.5, -155.5)
