@@ -1,4 +1,3 @@
-# Drugonion.gd
 extends CharacterBody2D
 
 @export var speed: float = 200.0
@@ -14,7 +13,8 @@ var can_attack: bool = true
 @onready var sprite = $AnimatedSprite2D
 @onready var health_bar = $HealthBar
 @onready var hitbox = $Area2D  
-@onready var hitbox_shape = $Area2D/HitboxHardAttack  
+@onready var hitbox_shape = $Area2D/HitboxHardAttack
+@onready var attack_sound = $AttackSound # Referencia al nuevo AudioStreamPlayer
 
 func _ready():
 	add_to_group("fighters")
@@ -58,9 +58,11 @@ func attack(type):
 
 	if type == "light":
 		sprite.play("light_attack")
+		attack_sound.play() # Reproducimos el sonido para ataque ligero
 		await get_tree().create_timer(0.2).timeout
 	elif type == "hard":
 		sprite.play("hard_attack")
+		attack_sound.play() # Reproducimos el sonido para ataque fuerte
 		await get_tree().create_timer(0.4).timeout
 
 	hitbox.monitoring = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckyr4168an1w6"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_e2rud"]
+[ext_resource type="Script" uid="uid://bwhbjxjvv6aq4" path="res://main_menu.gd" id="1_e2rud"]
 [ext_resource type="Texture2D" uid="uid://fcs3pb5u7qfm" path="res://art/escenario/fondo inicial.jpg" id="2_84sxs"]
 
 [node name="Control" type="Control"]
