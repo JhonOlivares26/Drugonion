@@ -1,14 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://btyhoiwjpgnr2"]
+[gd_scene load_steps=47 format=3 uid="uid://btyhoiwjpgnr2"]
 
 [ext_resource type="Texture2D" uid="uid://ba2bakd8fnxrw" path="res://art/Drugonion/drugonion-idle.png" id="1_7ej3u"]
-[ext_resource type="Script" uid="uid://bpyiylnng3brv" path="res://Drugonion.gd" id="1_cyrre"]
+[ext_resource type="Script" path="res://Drugonion.gd" id="1_cyrre"]
 [ext_resource type="Texture2D" uid="uid://pkfwb4rb8io7" path="res://art/escenario/ventana.png" id="1_dkalp"]
 [ext_resource type="Texture2D" uid="uid://dl5cq2wo6a2p5" path="res://art/escenario/Escenario-removebg-preview (1).png" id="1_mg0w4"]
-[ext_resource type="Script" uid="uid://cevon2j5ynvv5" path="res://ventana.gd" id="2_4yvn4"]
+[ext_resource type="Script" path="res://area_2d.gd" id="1_wuhih"]
+[ext_resource type="Script" path="res://ventana.gd" id="2_4yvn4"]
 [ext_resource type="Texture2D" uid="uid://b2dvvrtsxvul2" path="res://art/Drugonion/drugonion-jump.png" id="4_07knm"]
 [ext_resource type="Texture2D" uid="uid://nm7fi3kyl500" path="res://art/Drugonion/drugonion-walk.png" id="5_8mlsi"]
 [ext_resource type="Texture2D" uid="uid://b4nly1mkao73e" path="res://art/Drugonion/drugonion-light-punch.png" id="5_cte8b"]
-[ext_resource type="Script" uid="uid://c1w86h1ge0n40" path="res://Carrotscigar.gd" id="6_kuoum"]
+[ext_resource type="Script" path="res://Carrotscigar.gd" id="6_kuoum"]
 [ext_resource type="Texture2D" uid="uid://duw3y0yuncrcd" path="res://art/Carrotcigar/CarrotCigar.png" id="6_ou73l"]
 [ext_resource type="Texture2D" uid="uid://bbfiio0e2wfwy" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move1.png" id="7_3b232"]
 [ext_resource type="Texture2D" uid="uid://c3w8k1h34oah6" path="res://art/Carrotcigar/CarrotCigar-soft-attack-move1.png" id="9_7x0r0"]
@@ -19,11 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://y8w2x4v43acf" path="res://art/HealthBar/fondo_barra.png" id="13_vioxn"]
 [ext_resource type="Texture2D" uid="uid://c0ppe7vyy5qe8" path="res://art/escenario/raton-parado3.png" id="14_fpx34"]
 [ext_resource type="Texture2D" uid="uid://bxhr2y42rl0ri" path="res://art/HealthBar/borde_barra_Drugonion.png" id="14_k7so5"]
-[ext_resource type="Script" uid="uid://dbt3e48xfvy38" path="res://rata.gd" id="15_2stgf"]
+[ext_resource type="Script" path="res://rata.gd" id="15_2stgf"]
 [ext_resource type="Texture2D" uid="uid://np7jambksrd6" path="res://art/HealthBar/progreso_barra.png" id="15_h1k4o"]
-[ext_resource type="AudioStream" uid="uid://cncth6hdeb8qq" path="res://art/sonidos/561653__mattruthsound__hit-punch-cloth-pillow-bedding-021.wav" id="17_ujj6v"]
+[ext_resource type="AudioStream" uid="uid://bj0y00qmxipcg" path="res://art/Punch Sound Effect - Gaming SFX.wav" id="18_343wb"]
 [ext_resource type="Texture2D" uid="uid://ducqkev4vtvfx" path="res://art/Carrotcigar/CarrotCigar-hard-attack-move2.png" id="18_bheac"]
+[ext_resource type="AudioStream" uid="uid://clq7oxwhtkyxd" path="res://art/Sonic Spring Bounce  - Sound Effect.wav" id="19_mdlup"]
 [ext_resource type="Texture2D" uid="uid://dqh57tfeqak7" path="res://art/HealthBar/borde_barra_Cartotcigar.png" id="22_i01jj"]
+[ext_resource type="AudioStream" uid="uid://binnj0s6cbnlj" path="res://art/Bad Boys (Theme from Cops).wav" id="26_i1ai0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6u3c"]
 atlas = ExtResource("1_dkalp")
@@ -221,6 +224,7 @@ size = Vector2(147, 5)
 
 [node name="Area2D" type="Area2D"]
 position = Vector2(-27, 67)
+script = ExtResource("1_wuhih")
 
 [node name="Ventana" type="AnimatedSprite2D" parent="."]
 position = Vector2(57, -144)
@@ -318,7 +322,12 @@ scale = Vector2(1, -1.0133)
 shape = SubResource("CircleShape2D_065el")
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="Drugonion"]
-stream = ExtResource("17_ujj6v")
+stream = ExtResource("18_343wb")
+volume_db = -20.0
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Drugonion"]
+stream = ExtResource("19_mdlup")
+volume_db = -10.0
 
 [node name="Carrotcigar" type="CharacterBody2D" parent="."]
 position = Vector2(101, 19)
@@ -358,6 +367,14 @@ position = Vector2(45.076, -36.0414)
 rotation = -2.11185
 shape = SubResource("RectangleShape2D_cwimh")
 
+[node name="AttackSound" type="AudioStreamPlayer" parent="Carrotcigar"]
+stream = ExtResource("18_343wb")
+volume_db = -20.0
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Carrotcigar"]
+stream = ExtResource("19_mdlup")
+volume_db = -10.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-4, 0)
 collision_layer = 3
@@ -396,3 +413,7 @@ position = Vector2(15, 0)
 offset = Vector2(0, -120)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="battle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_i1ai0")
+volume_db = -10.0

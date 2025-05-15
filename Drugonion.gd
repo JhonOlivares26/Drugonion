@@ -15,6 +15,7 @@ var can_attack: bool = true
 @onready var hitbox = $Area2D  
 @onready var hitbox_shape = $Area2D/HitboxHardAttack
 @onready var attack_sound = $AttackSound # Referencia al nuevo AudioStreamPlayer
+@onready var jump_sound = $JumpSound # Referencia al nuevo AudioStreamPlayer
 
 func _ready():
 	add_to_group("fighters")
@@ -28,10 +29,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	var direction = Input.get_axis("move_left_player1", "move_right_player1")
-	if is_on_floor() and Input.is_action_just_pressed("jump_player1"):
+	var direction = Input.get_axis("move_left_controller", "move_right_controller")
+	if is_on_floor() and Input.is_action_just_pressed("jump_controller"):
 		velocity.y = jump_force
 		sprite.play("jump")
+		jump_sound.play() # Reproducimos el sonido para ataque ligero
 
 	if can_attack:
 		velocity.x = direction * speed
@@ -45,9 +47,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	if Input.is_action_just_pressed("light_attack_player1") and can_attack:
+	if Input.is_action_just_pressed("light_attack_controller") and can_attack:
 		attack("light")
-	elif Input.is_action_just_pressed("hard_attack_player1") and can_attack:
+	elif Input.is_action_just_pressed("hard_attack_controller") and can_attack:
 		attack("hard")
 
 func attack(type):

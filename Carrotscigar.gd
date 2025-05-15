@@ -15,6 +15,8 @@ var can_attack: bool = true
 @onready var health_bar = $HealthBar
 @onready var hitbox = $Area2D  
 @onready var hitbox_shape = $Area2D/HitboxHardAttack
+@onready var attack_sound = $AttackSound # Referencia al nuevo AudioStreamPlayer
+@onready var jump_sound = $JumpSound # Referencia al nuevo AudioStreamPlayer
 
 func _ready():
 	print("Referencia a hitbox:", hitbox)
@@ -35,6 +37,7 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_action_just_pressed("jump_player2"):
 		velocity.y = jump_force
 		sprite.play("jump")
+		jump_sound.play() 
 
 	if can_attack:
 		velocity.x = direction * speed
@@ -61,9 +64,11 @@ func attack(type):
 
 	if type == "light":
 		sprite.play("light_attack")
+		attack_sound.play()
 		await get_tree().create_timer(0.2).timeout
 	elif type == "hard":
 		sprite.play("hard_attack")
+		attack_sound.play()
 		await get_tree().create_timer(0.4).timeout
 
 	hitbox.monitoring = false
